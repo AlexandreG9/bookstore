@@ -1,4 +1,4 @@
-package fr.aguiheneuf.librairie.model;
+package fr.aguiheneuf.bookstore.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,7 +24,7 @@ public class Stock implements Serializable {
     private Integer id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "isbn_book")
+    @JoinColumn(name = "isbn_book", unique = true)
     private Book book;
 
     @Column(name = "quantity_stock")

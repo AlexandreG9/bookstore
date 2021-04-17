@@ -1,4 +1,4 @@
-package fr.aguiheneuf.librairie.model;
+package fr.aguiheneuf.bookstore.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.ws.rs.Path;
+
 import java.math.BigDecimal;
 
 /**

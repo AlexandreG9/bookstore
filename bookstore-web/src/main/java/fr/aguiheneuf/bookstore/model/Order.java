@@ -1,4 +1,4 @@
-package fr.aguiheneuf.librairie.model;
+package fr.aguiheneuf.bookstore.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

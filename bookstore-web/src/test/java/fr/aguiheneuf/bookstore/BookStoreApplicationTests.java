@@ -1,10 +1,10 @@
-package fr.aguiheneuf.librairie;
+package fr.aguiheneuf.bookstore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LibrairieApplicationTests {
+class BookStoreApplicationTests {
 
     @Test
     void contextLoads() {

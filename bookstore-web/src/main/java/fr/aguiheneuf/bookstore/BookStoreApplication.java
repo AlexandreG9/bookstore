@@ -1,13 +1,13 @@
-package fr.aguiheneuf.librairie;
+package fr.aguiheneuf.bookstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LibrairieApplication {
+public class BookStoreApplication {
 
     public static void main(final String[] args) {
-        SpringApplication.run(LibrairieApplication.class, args);
+        SpringApplication.run(BookStoreApplication.class, args);
     }
 
 }
