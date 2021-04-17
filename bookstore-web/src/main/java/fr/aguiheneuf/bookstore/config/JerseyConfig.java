@@ -1,6 +1,7 @@
 package fr.aguiheneuf.bookstore.config;
 
 import fr.aguiheneuf.bookstore.webservice.BookWebService;
+import fr.aguiheneuf.bookstore.webservice.OrderWebService;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,5 +18,6 @@ public class JerseyConfig extends ResourceConfig {
      */
     public JerseyConfig() {
         register(BookWebService.class);
+        register(OrderWebService.class);
     }
 }
