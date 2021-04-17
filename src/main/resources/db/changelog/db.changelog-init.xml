@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Creation of the table that list books -->
+    <changeSet id="create_table_book" author="aguiheneuf">
+        <createTable tableName="t_book" schemaName="bookstore">
+            <column name="isbn_book" type="VARCHAR(13)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title_book" type="VARCHAR(50)" >
+                <constraints nullable="false" />
+            </column>
+            <column name="price_book" type="DECIMAL(6,2)" >
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Creation of the table that store orders -->
+    <changeSet id="create_table_order" author="aguiheneuf">
+        <createTable tableName="t_order" schemaName="bookstore">
+            <column name="id_order" type="INT(10) UNSIGNED" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="price_order" type="DECIMAL(6,2)" >
+                <constraints nullable="false" />
+            </column>
+            <column name="date_order" type="DATETIME">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Creation of the table that determines quantity of books in the bookstore -->
+    <changeSet id="create_t_stock" author="aguiheneuf">
+        <createTable tableName="t_stock">
+            <column name="id_stock" type="INT(10) UNSIGNED" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="isbn_book" type="VARCHAR(13)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_book_stock"
+                             referencedTableSchemaName="bookstore"
+                             referencedTableName="t_book"
+                             referencedColumnNames="isbn_book" />
+            </column>
+            <column name="quantity_stock" type="INT(10) UNSIGNED" defaultValueNumeric="0">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create table that store details of one order -->
+    <changeSet id="create_t_order_detail" author="aguiheneuf">
+        <createTable tableName="t_order_detail" schemaName="bookstore">
+            <column name="id_order_detail" type="INT(10) UNSIGNED" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="isbn_book" type="VARCHAR(13)">
+                <constraints foreignKeyName="fk_book_order_book"
+                             referencedTableSchemaName="bookstore"
+                             referencedTableName="t_book"
+                             referencedColumnNames="isbn_book"
+                />
+            </column>
+            <column name="id_order" type="INT(10) UNSIGNED" >
+                <constraints foreignKeyName="fk_book_order_order"
+                             referencedTableSchemaName="bookstore"
+                             referencedTableName="t_order"
+                             referencedColumnNames="id_order"
+                />
+            </column>
+            <column name="quantity_book_order_detail" type="INT(10) UNSIGNED" defaultValueNumeric="1"
+                    remarks="Quantity &lt;= 0 will make a no sense">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
