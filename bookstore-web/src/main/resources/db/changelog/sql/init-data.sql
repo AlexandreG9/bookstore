@@ -1,5 +1,5 @@
 -- Insert book
-INSERT INTO t_book (isbn_book, title_book, price_book) VALUE ('9782070584628', 'Harry Potter à l''école des sorcier', 5.6);
+INSERT INTO t_book (isbn_book, title_book, price_book) VALUE ('9782070584628', 'Harry Potter à l''école des sorciers', 5.6);
 INSERT INTO t_book (isbn_book, title_book, price_book) VALUE ('9782070360284', 'Voyage au bout de la nuit', 10.3);
 INSERT INTO t_book (isbn_book, title_book, price_book) VALUE ('9782070754922', 'A la recherche du temps perdu', 35);
 INSERT INTO t_book (isbn_book, title_book, price_book) VALUE ('9782020238113', 'Cent ans de solitude', 8.5);

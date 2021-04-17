@@ -11,7 +11,7 @@ There are 3 webservices
 
 Return books from a set of ids(ISBN). If some or all are not found, no books returned for these ids.
 
-Example :
+For example, this request :
 
     POST localhost:8080/book/find
     {
@@ -21,7 +21,7 @@ Example :
             "9782370490001"
         ]
     }
-Will return :
+return :
 
     [
         {
@@ -31,7 +31,7 @@ Will return :
         },
         {
             "isbn": "9782070584628",
-            "title": "Harry Potter à l'école des sorcier",
+            "title": "Harry Potter à l'école des sorciers",
             "price": 5.60
         },
         {
