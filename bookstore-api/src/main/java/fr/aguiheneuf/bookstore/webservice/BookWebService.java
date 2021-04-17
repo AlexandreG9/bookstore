@@ -1,7 +1,11 @@
 package fr.aguiheneuf.bookstore.webservice;
 
-import javax.ws.rs.GET;
+import fr.aguiheneuf.bookstore.dto.SearchBookRequestDto;
+
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -10,6 +14,8 @@ import javax.ws.rs.core.Response;
 @Path("/book")
 public interface BookWebService {
 
-    @GET
-    Response getBook();
+    @POST
+    @Path("/find")
+    @Produces(MediaType.APPLICATION_JSON)
+    Response findBooks(final SearchBookRequestDto searchBookRequestDto);
 }
