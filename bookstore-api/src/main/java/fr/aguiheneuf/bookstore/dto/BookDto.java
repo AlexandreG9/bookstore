@@ -1,7 +1,6 @@
 package fr.aguiheneuf.bookstore.dto;
 
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -9,7 +8,9 @@ import java.math.BigDecimal;
 /**
  * @author Alexandre Guiheneuf
  */
-@Value
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder(toBuilder = true)
 public class BookDto implements Serializable {
 
