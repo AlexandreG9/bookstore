@@ -1,7 +1,6 @@
 package fr.aguiheneuf.bookstore.dto;
 
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,8 +10,7 @@ import java.util.List;
 /**
  * @author Alexandre Guiheneuf
  */
-@Value
-@Builder(toBuilder = true)
+@Data
 public class OrderDto implements Serializable {
 
     private Integer orderNumber;

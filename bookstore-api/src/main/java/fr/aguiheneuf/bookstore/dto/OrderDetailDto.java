@@ -1,15 +1,14 @@
 package fr.aguiheneuf.bookstore.dto;
 
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
 import java.io.Serializable;
 
 /**
  * @author Alexandre Guiheneuf
  */
-@Value
-@Builder(toBuilder = true)
+
+@Data
 public class OrderDetailDto implements Serializable {
 
     private BookDto book;

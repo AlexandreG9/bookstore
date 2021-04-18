@@ -1,4 +1,4 @@
-package fr.aguiheneuf.bookstore.mapper;
+package fr.aguiheneuf.bookstore.repository;
 
 import fr.aguiheneuf.bookstore.model.Stock;
 import org.springframework.data.jpa.repository.Query;

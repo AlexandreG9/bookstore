@@ -4,7 +4,7 @@ import fr.aguiheneuf.bookstore.dto.BookRequestDto;
 import fr.aguiheneuf.bookstore.dto.OrderBooksRequestDto;
 import fr.aguiheneuf.bookstore.dto.OrderDto;
 import fr.aguiheneuf.bookstore.mapper.OrderMapper;
-import fr.aguiheneuf.bookstore.mapper.StockRepository;
+import fr.aguiheneuf.bookstore.repository.StockRepository;
 import fr.aguiheneuf.bookstore.model.Book;
 import fr.aguiheneuf.bookstore.model.Order;
 import fr.aguiheneuf.bookstore.model.OrderDetail;
