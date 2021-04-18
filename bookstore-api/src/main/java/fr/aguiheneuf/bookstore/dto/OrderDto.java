@@ -11,6 +11,9 @@ import java.util.List;
  * @author Alexandre Guiheneuf
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class OrderDto implements Serializable {
 
     private Integer orderNumber;

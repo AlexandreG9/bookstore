@@ -2,18 +2,15 @@ package fr.aguiheneuf.bookstore;
 
 import fr.aguiheneuf.bookstore.dto.BookDto;
 import fr.aguiheneuf.bookstore.dto.SearchBookRequestDto;
+import fr.aguiheneuf.bookstore.util.TestUtil;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,17 +19,18 @@ import java.util.List;
  *
  * @author Alexandre Guiheneuf
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class BookWebServiceIntegrationTest {
+public class BookWebServiceIntegrationTest extends AbstractIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
     public void findBookSuccess() {
+        SearchBookRequestDto searchBookRequestDto = new SearchBookRequestDto();
+        searchBookRequestDto.setIsbnList(Arrays.asList("9782070368228"));
+
         final ResponseEntity<List<BookDto>> response = this.restTemplate.exchange("/book/find", HttpMethod.POST,
-                generateHttpEntity(Arrays.asList("9782070368228")), new ParameterizedTypeReference<List<BookDto>>() {
+                TestUtil.generateHttpEntity(searchBookRequestDto), new ParameterizedTypeReference<List<BookDto>>() {
                 });
         Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -49,20 +47,10 @@ public class BookWebServiceIntegrationTest {
     @Test
     public void findBookError() {
         final ResponseEntity<String> response = this.restTemplate.exchange("/book/find", HttpMethod.POST,
-                generateHttpEntity(new ArrayList<>()), String.class);
+                TestUtil.generateHttpEntity(new SearchBookRequestDto()), String.class);
 
         Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
         Assertions.assertThat(response.getBody()).isNull();
-    }
-
-    private HttpEntity<SearchBookRequestDto> generateHttpEntity(final List<String> isbnList) {
-        final HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        final SearchBookRequestDto searchBookRequestDto = new SearchBookRequestDto();
-        searchBookRequestDto.setIsbnList(isbnList);
-
-        return new HttpEntity<>(searchBookRequestDto, headers);
     }
 
 }

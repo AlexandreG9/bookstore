@@ -10,6 +10,9 @@ import java.util.List;
  * @author Alexandre Guiheneuf
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class SearchBookRequestDto {
 
     private List<String> isbnList;

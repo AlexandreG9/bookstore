@@ -9,6 +9,9 @@ import java.io.Serializable;
  */
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class OrderDetailDto implements Serializable {
 
     private BookDto book;
