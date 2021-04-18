@@ -76,14 +76,16 @@ public class OrderServiceImpl implements OrderService {
 
         final Order order = new Order();
         order.setDateTime(LocalDateTime.now());
-        order.setPrice(BigDecimal.ZERO);
 
-        orderBooksRequestDto.getBookRequestDtos().forEach(bookRequestDto -> {
-            final OrderDetail orderDetail = orderBook(bookRequestDto);
-            orderDetail.setOrder(order);
-            order.setPrice(order.getPrice().add(orderDetail.getBook().getPrice().multiply(BigDecimal.valueOf(orderDetail.getQuantity()))));
-            order.getOrderDetails().add(orderDetail);
-        });
+        order.setOrderDetails(orderBooksRequestDto.getBookRequestDtos().stream()
+                .map(bookRequestDto -> orderBook(bookRequestDto, order))
+                .collect(Collectors.toList()));
+
+        // Compute the total price
+        order.setPrice(
+                order.getOrderDetails().stream()
+                        .map(orderDetail -> orderDetail.getBook().getPrice().multiply(BigDecimal.valueOf(orderDetail.getQuantity())))
+                        .reduce(BigDecimal.ZERO, BigDecimal::add));
 
         // Save order
         final Order savedOrder = orderRepository.save(order);
@@ -101,7 +103,7 @@ public class OrderServiceImpl implements OrderService {
                 .count();
     }
 
-    private OrderDetail orderBook(final BookRequestDto bookRequestDto) {
+    private OrderDetail orderBook(final BookRequestDto bookRequestDto, final Order order) {
         final Book book = bookRepository.findById(bookRequestDto.getIsbn())
                 .orElseThrow(() -> new IllegalStateException("The book with isbn " + bookRequestDto.getIsbn() + " doesn't exists"));
 
@@ -114,6 +116,7 @@ public class OrderServiceImpl implements OrderService {
         final OrderDetail orderDetail = new OrderDetail();
         orderDetail.setBook(book);
         orderDetail.setQuantity(bookRequestDto.getQuantity());
+        orderDetail.setOrder(order);
 
         return orderDetail;
     }

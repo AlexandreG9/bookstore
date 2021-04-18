@@ -26,7 +26,7 @@ public class OrderDetail implements Serializable {
     @JoinColumn(name = "isbn_book")
     private Book book;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_order")
     private Order order;
 

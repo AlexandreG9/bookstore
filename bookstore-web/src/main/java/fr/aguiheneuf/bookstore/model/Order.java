@@ -41,11 +41,4 @@ public class Order implements Serializable {
     @Column(name="price_order", nullable = false)
     private BigDecimal price;
 
-    /**
-     * Default constructor
-     */
-    public Order() {
-        this.orderDetails = new ArrayList<>();
-    }
-
 }
