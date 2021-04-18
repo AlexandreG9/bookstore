@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,6 +27,7 @@ import java.util.Set;
 public class Order implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_order")
     @EqualsAndHashCode.Include
     private Integer id;
@@ -31,10 +35,17 @@ public class Order implements Serializable {
     @Column(name = "date_order", nullable = false)
     private LocalDateTime dateTime;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
-    private Set<OrderDetail> orderDetails;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderDetail> orderDetails;
 
     @Column(name="price_order", nullable = false)
     private BigDecimal price;
+
+    /**
+     * Default constructor
+     */
+    public Order() {
+        this.orderDetails = new ArrayList<>();
+    }
 
 }

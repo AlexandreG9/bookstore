@@ -1,5 +1,6 @@
 package fr.aguiheneuf.bookstore.webservice.impl;
 
+import fr.aguiheneuf.bookstore.dto.OrderBooksRequestDto;
 import fr.aguiheneuf.bookstore.service.OrderService;
 import fr.aguiheneuf.bookstore.webservice.OrderWebService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,19 @@ public class OrderWebServiceImpl implements OrderWebService {
         } catch (final Exception e) {
             log.error("Cannot find order by id {}", idOrder, e);
             return Response.serverError().entity("Cannot find order").build();
+        }
+    }
+
+    @Override
+    public Response createOrder(final OrderBooksRequestDto orderBooksRequestDto) {
+        try {
+            return Response.ok(orderService.createOrder(orderBooksRequestDto)).build();
+        } catch (final IllegalStateException stateException) {
+            log.warn("Books are not available", stateException);
+            return Response.ok(stateException.getMessage()).build();
+        } catch (final Exception e) {
+            log.error("Cannot order books", e);
+            return Response.serverError().entity("Technical error, cannot order books").build();
         }
     }
 }

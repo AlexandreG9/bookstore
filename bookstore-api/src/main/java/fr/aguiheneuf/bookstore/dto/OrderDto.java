@@ -6,7 +6,7 @@ import lombok.Value;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author Alexandre Guiheneuf
@@ -19,7 +19,7 @@ public class OrderDto implements Serializable {
 
     private LocalDateTime dateTime;
 
-    private Set<OrderDetailDto> orderDetails;
+    private List<OrderDetailDto> orderDetails;
 
     private BigDecimal price;
 }

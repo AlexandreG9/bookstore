@@ -18,6 +18,7 @@ import java.io.Serializable;
 public class OrderDetail implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_order_detail")
     private Integer id;
 
@@ -25,7 +26,7 @@ public class OrderDetail implements Serializable {
     @JoinColumn(name = "isbn_book")
     private Book book;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_order")
     private Order order;
 

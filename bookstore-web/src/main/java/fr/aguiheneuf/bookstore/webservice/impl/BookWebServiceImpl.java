@@ -31,7 +31,7 @@ public class BookWebServiceImpl implements BookWebService {
                 return Response.ok(bookService.findBook(searchBookRequestDto)).build();
             }
             return Response.noContent().build();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             log.error("Impossible to find book", e);
             return Response.serverError().entity("Error while searching books").build();
         }

@@ -80,3 +80,50 @@ return :
         ],
         "price": 55.60
     }
+
+## 3. Order book
+
+Can order 1 or more books. If one of these are unavailable, an error is thrown.
+
+Example :
+
+    POST localhost:8080/order/create
+    {
+    "bookRequestDtos": [
+            {
+                "isbn" : "9782070754922",
+                "quantity" : 1
+            },
+            {
+                "isbn" : "9782070368228",
+                "quantity" : 2
+            }
+        ]
+    }
+
+Will return an Order object :
+
+    {
+        "orderNumber": 15,
+        "dateTime": "2021-04-18T11:17:16.0610499",
+        "orderDetails": [
+            {
+                "book": {
+                    "isbn": "9782070368228",
+                    "title": "1984",
+                    "price": 9.20
+                },
+                "quantity": 2
+            },
+            {
+                "book": {
+                    "isbn": "9782070754922",
+                    "title": "A la recherche du temps perdu",
+                    "price": 35.00
+                },
+                "quantity": 1
+            }
+        ],
+        "price": 53.40
+    }
+    
