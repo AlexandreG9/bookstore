@@ -3,7 +3,7 @@ package fr.aguiheneuf.bookstore;
 import fr.aguiheneuf.bookstore.dto.*;
 import fr.aguiheneuf.bookstore.util.TestUtil;
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpMethod;
