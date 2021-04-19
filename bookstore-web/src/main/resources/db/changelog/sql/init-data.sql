@@ -12,7 +12,7 @@ INSERT INTO t_book (isbn_book, title_book, price_book) VALUE ('9782370490001', '
 
 -- Insert Stock
 INSERT INTO t_stock (isbn_book, quantity_stock) VALUE ('9782070584628', 0);
-INSERT INTO t_stock (isbn_book, quantity_stock) VALUE ('9782070360284', 1);
+INSERT INTO t_stock (isbn_book, quantity_stock) VALUE ('9782070360284', 200);
 INSERT INTO t_stock (isbn_book, quantity_stock) VALUE ('9782070754922', 40);
 INSERT INTO t_stock (isbn_book, quantity_stock) VALUE ('9782020238113', 10);
 INSERT INTO t_stock (isbn_book, quantity_stock) VALUE ('9782075134040', 20);

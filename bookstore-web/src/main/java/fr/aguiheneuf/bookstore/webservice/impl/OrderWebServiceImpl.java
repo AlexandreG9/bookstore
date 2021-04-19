@@ -4,6 +4,7 @@ import fr.aguiheneuf.bookstore.dto.OrderBooksRequestDto;
 import fr.aguiheneuf.bookstore.service.OrderService;
 import fr.aguiheneuf.bookstore.webservice.OrderWebService;
 import lombok.extern.slf4j.Slf4j;
+import org.glassfish.jersey.internal.guava.Preconditions;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.core.Response;
@@ -24,6 +25,7 @@ public class OrderWebServiceImpl implements OrderWebService {
     @Override
     public Response findOrder(final Integer idOrder) {
         try {
+            Preconditions.checkNotNull(idOrder);
             return orderService.findOrderById(idOrder)
                     .map(Response::ok)
                     .orElseGet(() -> Response.status(Response.Status.NOT_FOUND))
@@ -37,6 +39,8 @@ public class OrderWebServiceImpl implements OrderWebService {
     @Override
     public Response createOrder(final OrderBooksRequestDto orderBooksRequestDto) {
         try {
+            Preconditions.checkNotNull(orderBooksRequestDto);
+            Preconditions.checkNotNull(orderBooksRequestDto.getBookRequestDtos(), "No book to order");
             return Response.ok(orderService.createOrder(orderBooksRequestDto)).build();
         } catch (final IllegalStateException stateException) {
             log.warn("Books are not available", stateException);
