@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Set;
 
 /**
+ * An input object to order books
+ *
  * @author Alexandre Guiheneuf
  */
 @Data
@@ -17,6 +19,9 @@ import java.util.Set;
 @Builder(toBuilder = true)
 public class OrderBooksRequestDto implements Serializable {
 
+    /**
+     * The list of requested books
+     */
     private Set<BookRequestDto> bookRequestDtos;
 
 }

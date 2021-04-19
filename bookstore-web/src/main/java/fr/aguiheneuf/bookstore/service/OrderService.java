@@ -19,6 +19,14 @@ public interface OrderService {
      */
     Optional<OrderDto> findOrderById(Integer id);
 
+    /**
+     * Create an order.
+     * The order is impossible if one book of the order is unavailable
+     *
+     * @param orderBooksRequestDto the request contains books and quantity to order
+     * @return the summary of the order by {@link OrderDto}
+     * @throws IllegalStateException if a book to order is not available
+     */
     OrderDto createOrder(OrderBooksRequestDto orderBooksRequestDto);
 
 }

@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * Entity class
- * Contains informations for the order
+ * Contains informations for books order
  *
  * @author Alexandre Guiheneuf
  */
@@ -28,12 +28,21 @@ public class Order implements Serializable {
     @Column(name = "id_order")
     private Integer id;
 
+    /**
+     * The creation date of the order
+     */
     @Column(name = "date_order", nullable = false)
     private LocalDateTime dateTime;
 
+    /**
+     * Contains détail of the order
+     */
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderDetail> orderDetails;
 
+    /**
+     * The total price of the order
+     */
     @Column(name = "price_order", nullable = false)
     private BigDecimal price;
 

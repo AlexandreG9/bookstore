@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
+ * Compose {@link Order}
+ * Contains the detail of a book order
+ *
  * @author Alexandre Guiheneuf
  */
 @Getter
@@ -22,14 +25,23 @@ public class OrderDetail implements Serializable {
     @Column(name="id_order_detail")
     private Integer id;
 
+    /**
+     * The book associated this {@link OrderDetail}
+     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "isbn_book")
     private Book book;
 
+    /**
+     * The order that contains this {@link OrderDetail}
+     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_order")
     private Order order;
 
+    /**
+     * The quantity books
+     */
     @Column(name = "quantity_book_order_detail")
     private Integer quantity;
 }

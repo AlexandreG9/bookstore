@@ -15,6 +15,9 @@ import java.util.List;
 @Builder(toBuilder = true)
 public class SearchBookRequestDto {
 
+    /**
+     * The list of book's isbn
+     */
     private List<String> isbnList;
 
 }

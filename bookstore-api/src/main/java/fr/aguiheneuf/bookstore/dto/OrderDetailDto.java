@@ -5,6 +5,9 @@ import lombok.*;
 import java.io.Serializable;
 
 /**
+ * Contains book and its quantity from an order
+ *
+ * @see OrderDto
  * @author Alexandre Guiheneuf
  */
 
@@ -14,8 +17,14 @@ import java.io.Serializable;
 @Builder(toBuilder = true)
 public class OrderDetailDto implements Serializable {
 
+    /**
+     * The book
+     */
     private BookDto book;
 
+    /**
+     * The quantity of corresponding book
+     */
     private Integer quantity;
 
 }

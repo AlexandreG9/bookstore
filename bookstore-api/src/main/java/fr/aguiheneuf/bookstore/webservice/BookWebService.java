@@ -10,11 +10,21 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
+ * Webservice dedicated to Book
+ *
  * @author Alexandre Guiheneuf
  */
 @Path("/book")
 public interface BookWebService {
 
+    /**
+     * Get a list of book from a list of ids in {@link SearchBookRequestDto}
+     * If a book id is unknown, it will be ignored
+     *
+     * @param searchBookRequestDto Contains the list of books id
+     * @return 200 : return the list of books
+     *          500 : a technical error during the research of books
+     */
     @POST
     @Path("/find")
     @Produces(MediaType.APPLICATION_JSON)

@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Books stock in the bookstore
+ * Determine the quantity of book in the bookStore
  *
  * @author Alexandre Guiheneuf
  */

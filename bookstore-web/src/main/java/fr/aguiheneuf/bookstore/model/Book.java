@@ -20,13 +20,22 @@ import java.math.BigDecimal;
 @Table(name = "t_book", schema = "bookstore")
 public class Book {
 
+    /**
+     * ISBN is unique identifier for a book
+     */
     @Id
     @Column(name = "isbn_book")
     private String isbn;
 
+    /**
+     * The title of the book
+     */
     @Column(name = "title_book", nullable = false)
     private String title;
 
+    /**
+     * The price of the book
+     */
     @Column(name = "price_book")
     private BigDecimal price;
 

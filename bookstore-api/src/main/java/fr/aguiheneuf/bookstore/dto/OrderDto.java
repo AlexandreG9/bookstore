@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
+ * Describe an order
+ *
  * @author Alexandre Guiheneuf
  */
 @Data
@@ -16,11 +18,23 @@ import java.util.List;
 @Builder(toBuilder = true)
 public class OrderDto implements Serializable {
 
+    /**
+     * The order number
+     */
     private Integer orderNumber;
 
+    /**
+     * The creation date of the order
+     */
     private LocalDateTime dateTime;
 
+    /**
+     * Contains list of books and quantity ordered
+     */
     private List<OrderDetailDto> orderDetails;
 
+    /**
+     * Total price of the order
+     */
     private BigDecimal price;
 }
